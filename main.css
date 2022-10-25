@@ -1,0 +1,52 @@
+body {
+  background-color: black;
+  font-family: 'Special Elite', cursive;
+  color: whitesmoke;
+}
+
+p {
+  background-color: black;
+}
+
+#thaChair {
+  background-color: black;
+  border-color: whitesmoke;
+}
+
+#sortingChair {
+  text-align: center;
+  margin: 20px;
+  background-color: black;
+}
+
+#congrats {
+  text-align: center;
+  margin: 20px;
+}
+
+#topImage {
+  text-align: center;
+}
+
+#sortingForm {
+  margin: 20px;
+  color: black;
+  width: 65%
+}
+
+#button-addon2 {
+  color: whitesmoke;
+}
+
+#bizzuttons {
+  margin: 20px;
+}
+
+#bottomImage {
+  text-align: center;
+  margin: 20px;
+}
+
+h5 {
+  color: black;
+}

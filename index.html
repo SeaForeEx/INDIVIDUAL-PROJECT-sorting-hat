@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Welcome To The Sorting Chair!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+  <link rel="shortcut icon" href="#">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+
+<body>
+ 
+  <div class="card" style="width: 18rem;" id="sortingChair">
+    <img src="images/TheSortingChair.png">
+    <p>Welcome to Death Row, this is the Sorting Chair.  Won't you take a seat?</p>
+    <button id="chairButton" class="btn btn-primary">Enter The Sorting Chair</button>
+  </div>
+
+  <div id="topImage"><img src="images/SnoopDogwarts.png"></div>
+
+  <div id="congrats">
+    Congratulations, you've been selected to attend the most prestigious Wizzleding School in the LBC. Enter your name below and the sorting chair will choose which level you belong in. Beware though, students, if you act up you will be sent to D-Block without any hesitation.
+  </div>
+
+  <form id="daForm">
+    <div id="sortingForm" class="input-group mb-3">
+      <input id="fyname" type="text" class="form-control" placeholder="First Year Student" aria-label="First Year Student" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addFirstYearToArray()">You're In The House Now!</button>
+    </div>
+  </form>
+
+  <div id="bizzuttons">
+    <button type="button" class="btn btn-secondary">All Houses</button>
+    <button type="button" class="btn btn-danger gryf">GryffinDRE</button>
+    <button type="button" class="btn btn-warning huff">HufflePuffPuffPass</button>
+    <button type="button" class="btn btn-primary lion">SnoopLionPaw</button>
+    <button type="button" class="btn btn-success slizz">Slizzerin</button>
+  </div>
+
+  <div id="fy-header">This Is Cell Block One</div>
+  <div id="cellBlockOne"></div>
+
+  <div id="dB-header"> This is D-Block</div>
+  <div id="dBlock"> </div>
+  <div id="bottomImage"><img src="images/BowWowFooter.png"></div>
+
+
+  
+
+  
+  
+  
+  
+ 
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+  <script src="main.js"></script>
+</body>
+
+</html>
