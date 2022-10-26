@@ -57,6 +57,9 @@ document.getElementById("chairButton").addEventListener("click", () => {
   document.getElementById("dB-header").hidden = false;
   document.getElementById("dBlock").hidden = false;
   document.getElementById("bottomImage").hidden = false;
+
+  document.title = "Snoop Doggy Doggwart's School of Snitchcraft and Wizzledry";
+
 });
 
 // Lets everything render
