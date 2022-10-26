@@ -65,9 +65,10 @@ const renderToDom = (divId, htmlToRender) => {
     selectedDiv.innerHTML = htmlToRender;
   } 
 
-// Adds First Year Students to Randomly Generated House
-
 function addFirstYearToArray() {
+
+// Picks Randomly Generated House for First Year Student
+
   let newHouse = "";
   randomHouse = Math.floor(Math.random()*4);
   if (randomHouse === 0) {     
@@ -80,49 +81,105 @@ function addFirstYearToArray() {
       newHouse = "Slizzerin"
     }
 
+// Defines user name and house as an object
+
   const object = {
     id: firstYearsArray.length + 1,
     name: document.getElementById("fyname").value,
     house: newHouse
   }
+
+// Pushes object on first year array
+
   firstYearsArray.push(object);
+
+// Function called within a function
+// Sends this info to the next function
   firstYearsOnDom(firstYearsArray);
+
+// Tested to see if first year array was edited
   console.log(firstYearsArray);
-  
- 
 }
 
 const firstYearsOnDom = (array) => {
+
+// starts with empty string
+
   let domString = "";
+
+// Turns each first year object into an HTML card
+
   for (const student of array) {
     domString += `
     <div class="card" style="width: 18rem;">
       <div class="card-body">
       <h5 class="card-title fy-name">${student.name}</h5>
       <p class="card-text fy-house">${student.house}</p>
-      <button class="btn btn-primary no-yard-time">No Yard Time Fool!</button>
+      <button id="noyard--${student.id}" class="btn btn-primary">No Yard Time Fool!</button>
+    </div> 
     </div>
-    </div>
-    `;
+    `; // array split occurs at the object's id
   }
+
+// Renders HTML cards onto the DOM
+
   renderToDom("#cellBlockOne", domString);
 }
 
-// D BLOCK SHIZZ
+// Assigns query selector to a variable
 
-document.querySelector("#no-yard-time").addEventListener("click", () => {
+const cellblockone = document.querySelector("#cellBlockOne");  // Puts content in this DIV
+
+// Adds event listener to "no yard time fool" button
+
+cellblockone.addEventListener("click", (e) => {
+  if (e.target.id.includes("noyard")) { // targets the id
+  // block id (string), index (number) 
+  // newdB (array), newdBobj (object) all undefined
   
+  // targets the split
+  // split occurs after -- with the object's id?
+  const [, id] = e.target.id.split("--");
+  // block id (string), index (number),
+  // newdB (array), newdBobj (object) undefined
 
-  const object = {
-    id: dBlockArray.length + 1,
-    name: document.getElementById("name").value,
-    house: "AZZkaban"
-  }
-  dBlockArray.push(object);
+  // assigns element's id to a variable
+  const index=firstYearsArray.findIndex(e => e.id === Number(id)); // converts id to number
+  // block id (string) defined 
+  // index (number), newdB (array), newdBobj (object) undefined
+
+  // assigns 1 spliced array element to a variable
+  // saves spliced array element 
+  // to be placed into d block array
+  const newdB = firstYearsArray.splice(index, 1);
+  // block id (string), index (number) defined
+  // newdB (array), newdBobj (object) undefined
+
+  // assigns spliced array object to a variable?
+  // accesses first element of spliced array
+  const newdBobj = newdB[0];
+  // block id (string), index (number) & newdB (array) defined
+  // newdBobj (object) undefined
+
+  // pushes spliced array object to dBlock array?
+  dBlockArray.push(newdBobj);
+  // block id (string), index (number) 
+  // newdB (array), newdBobj (object) all defined
+  
+  // sends info to next function
   dBlocksOnDom(dBlockArray);
+
+  // refreshes new first year array on screen
+  // takes new d block student
+  // off of the first year dom
+  firstYearsOnDom(firstYearsArray);
+
+  // double checks d block array on console
   console.log(dBlockArray);
-  
+} 
 });
+
+// Turns each d block object into an HTML card
 
 const dBlocksOnDom = (array) => {
   let domString = "";
@@ -131,26 +188,66 @@ const dBlocksOnDom = (array) => {
     <div class="card" style="width: 18rem;">
       <div class="card-body">
       <h5 class="card-title db-name">${student.name}</h5>
-      <p class="card-text db-house">${student.house}</p>
+      <p class="card-text db-house">"AZZkaban"</p>
       </div>
     </div>
     `;
   }
+
+// Renders HTML cards onto the DOM
+
   renderToDom("#dBlock", domString);
 }
 
-// NO YARD TIME FOOL!
+const filter = (array, houseString) => {
+  const typeArray = []; // Filters terms with specific house
 
+  for (const member of array) {
+    if (member.house === houseString) {
+    typeArray.push(member); 
+  }
+} //Goes through array and adds qualifying members to array
 
+return typeArray;
+}
 
+// Query selectors for each house filter button
 
+const showGryf = document.querySelector(".gryf");
+const showHuff = document.querySelector(".huff");
+const showLion = document.querySelector(".lion");
+const showSliz = document.querySelector(".slizz");
+const showAllHouses = document.querySelector(".allHouses");
 
+// Event listeners for each house filter button
 
+showGryf.addEventListener('click', () => {
+  const gryffy = filter(firstYearsArray, 'GryffinDRE');
+  firstYearsOnDom(gryffy); // cat button clicked
+})
 
+showHuff.addEventListener('click', () => {
+  const huffy = filter(firstYearsArray, 'HufflePuffPuffPass');
+  firstYearsOnDom(huffy);
+})
 
+showLion.addEventListener('click', () => {
+  const liony = filter(firstYearsArray, 'SnoopLionPaw');
+  firstYearsOnDom(liony);
+})
 
+showSliz.addEventListener('click', () => {
+  const slizzy = filter(firstYearsArray, 'Slizzerin');
+  firstYearsOnDom(slizzy);
+})
 
+showAllHouses.addEventListener('click', () => {
+  firstYearsOnDom(firstYearsArray);
+});
 
+// Random thing at the buttom of the javascript
+// But it starts the whole program?
+// What is event bubbling?
 
 const startApp = () => {
   dBlocksOnDom(dBlockArray);
