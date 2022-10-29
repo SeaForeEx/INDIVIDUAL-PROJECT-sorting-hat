@@ -14,9 +14,11 @@ p {
 }
 
 #sortingChair {
+  display: flex;
   text-align: center;
   margin: 20px;
   background-color: black;
+  justify-content: space-around;
 }
 
 #congrats {
@@ -40,6 +42,7 @@ p {
 
 #bizzuttons {
   margin: 20px;
+  justify-content: center;
 }
 
 #bottomImage {
@@ -49,4 +52,29 @@ p {
 
 h5 {
   color: black;
+}
+
+#mainArray {
+  display: flex;
+  text-align: center;
+  padding: 20px;
+  justify-content: space-around;
+}
+
+.card-body {
+  margin: 20px;
+}
+
+#fy-header, #dB-header {
+  font-size: 2rem;
+}
+
+.profEric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#daForm {
+  display: block;
 }

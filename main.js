@@ -39,10 +39,7 @@ document.getElementById("topImage").hidden = true;
 document.getElementById("congrats").hidden = true;
 document.getElementById("sortingForm").hidden = true;
 document.getElementById("bizzuttons").hidden = true;
-document.getElementById("fy-header").hidden = true;
-document.getElementById("cellBlockOne").hidden = true;
-document.getElementById("dB-header").hidden = true;
-document.getElementById("dBlock").hidden = true;
+document.getElementById("mainArray").hidden = true;
 document.getElementById("bottomImage").hidden = true;
 
 // Hides Sorting Chair and Shows Main School Page
@@ -52,14 +49,10 @@ document.getElementById("chairButton").addEventListener("click", () => {
   document.getElementById("congrats").hidden = false;
   document.getElementById("sortingForm").hidden = false;
   document.getElementById("bizzuttons").hidden = false;
-  document.getElementById("fy-header").hidden = false;
-  document.getElementById("cellBlockOne").hidden = false;
-  document.getElementById("dB-header").hidden = false;
-  document.getElementById("dBlock").hidden = false;
+  document.getElementById("mainArray").hidden = false;
   document.getElementById("bottomImage").hidden = false;
 
   document.title = "Snoop Doggy Doggwart's School of Snitchcraft and Wizzledry";
-
 });
 
 // Lets everything render
@@ -79,9 +72,9 @@ function addFirstYearToArray() {
     } else if (randomHouse === 1) {
       newHouse = "HufflePuffPuffPass";
     } else if (randomHouse === 2) {
-      newHouse = "SnoopLionPaw"
+      newHouse = "SnoopLionPaw";
     } else if (randomHouse === 3) {
-      newHouse = "Slizzerin"
+      newHouse = "Slizzerin";
     }
 
 // Defines user name and house as an object
@@ -95,6 +88,8 @@ function addFirstYearToArray() {
 // Pushes object on first year array
 
   firstYearsArray.push(object);
+  const form = document.querySelector("form");
+  form.reset();
 
 // Function called within a function
 // Sends this info to the next function
@@ -131,7 +126,7 @@ const firstYearsOnDom = (array) => {
 
 // Assigns query selector to a variable
 
-const cellblockone = document.querySelector("#cellBlockOne");  // Puts content in this DIV
+const cellblockone = document.querySelector("#cellBlockOne");  // changing name of element to cellblockone
 
 // Adds event listener to "no yard time fool" button
 
@@ -140,14 +135,17 @@ cellblockone.addEventListener("click", (e) => {
   // block id (string), index (number) 
   // newdB (array), newdBobj (object) all undefined
   
-  // targets the split
-  // split occurs after -- with the object's id?
-  const [, id] = e.target.id.split("--");
-  // block id (string), index (number),
-  // newdB (array), newdBobj (object) undefined
+  // targets the button with noyard as id
+  // gets number from button id
+  const [, burrito] = e.target.id.split("--"); //still a string
+  console.log(e.target.id);
+  // block id (string)
+  // index (number), newdB (array), newdBobj (object) undefined
 
   // assigns element's id to a variable
-  const index=firstYearsArray.findIndex(e => e.id === Number(id)); // converts id to number
+  const index=firstYearsArray.findIndex(quesadilla => quesadilla.id === Number(burrito)); // converts burrito string id to integer, getting the right index number i'm trying to target
+  console.log(index,burrito);
+  console.log(firstYearsArray[index])
   // block id (string) defined 
   // index (number), newdB (array), newdBobj (object) undefined
 
@@ -158,7 +156,7 @@ cellblockone.addEventListener("click", (e) => {
   // block id (string), index (number) defined
   // newdB (array), newdBobj (object) undefined
 
-  // assigns spliced array object to a variable?
+  // assigns spliced array object to a variable
   // accesses first element of spliced array
   const newdBobj = newdB[0];
   // block id (string), index (number) & newdB (array) defined
@@ -179,6 +177,7 @@ cellblockone.addEventListener("click", (e) => {
 
   // double checks d block array on console
   console.log(dBlockArray);
+  
 } 
 });
 
@@ -258,108 +257,3 @@ const startApp = () => {
 }
 
 startApp(); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const firstYearDiv = document.getElementById("cellBlockOne");
-
-// for (let i=0; i<firstYearsArray.length; i++) {
-  
-//   const fya=firstYearsArray[i];
-
-//   const firstYearCardString = `
-//   <div class="card">
-//     <h5 class="fy-name">${fya.name}</h5>
-//     <p class="daHouse">${fya.house}</p>
-//     <button class="btn btn-danger adopt-me" id="delete--">Expel</button>
-//   </div> 
-//   `;
-//   fyDiv.innerHTML+=firstYearCardString;
-//   renderToDom("#cellBlockOne", firstYearCardString)
-// } 
-
-// const renderToDom = (divId, htmlToRender) => {
-//   const selectedDiv = document.querySelector(divId);
-//   selectedDiv.innerHTML = htmlToRender;
-// }
-
-// // select/target the form on the DOM
-// const form = document.querySelector('form');
-
-// // create a function that grabs all the values from the form
-// // pushes the new object to the array
-// // repaints the DOM with the new pet
-// const createFirstYear = (e) => {
-//   e.preventDefault();
-//   let randomHouse = Math.floor(Math.random()*4);
-//   let newHouse = "";
-//   if (randomHouse === 1) {
-//     newHouse = "GryffinDRE";
-//   } else if (randomHouse === 2) {
-//     newHouse = "HufflePuffPuffPass";
-//   } else if (randomHouse === 3) {
-//     newHouse = "SnoopLionPaw"
-//   } else if (randomHouse === 4) {
-//     newHouse = "Slizzerin"
-//   }
-
-//   const newFirstYearObj = { //grabs the values
-//     name: document.querySelector("#name").value,
-//     house: newHouse
-//   }
-
-//   firstYearsArray.push(newFirstYearObj); // pushes new object
-//   cardsOnDom(firstYearsArray); // refreshes DOM with new pet
-//   form.reset(); // resets da form
-// }
-
-// // Add an event listener for the form submit
-// // Runs the function once you click Submit
-
-// form.addEventListener('submit', createFirstYear);
-
-// const startApp = () => {
-//   cardsOnDom(firstYearsArray);
-//   events(); // ALWAYS LAST
-// }
-
-// startApp();
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
